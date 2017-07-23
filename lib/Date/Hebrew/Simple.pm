@@ -1,15 +1,15 @@
 package Date::Hebrew::Simple;
 
-$Date::Hebrew::Simple::VERSION   = '0.01';
+$Date::Hebrew::Simple::VERSION   = '0.02';
 $Date::Hebrew::Simple::AUTHORITY = 'cpan:MANWAR';
 
 =head1 NAME
 
-Date::Hebrew::Simple - Represents Hebrewn date.
+Date::Hebrew::Simple - Represents Hebrew date.
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
