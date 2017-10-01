@@ -1,6 +1,6 @@
 package Date::Hebrew::Simple;
 
-$Date::Hebrew::Simple::VERSION   = '0.03';
+$Date::Hebrew::Simple::VERSION   = '0.04';
 $Date::Hebrew::Simple::AUTHORITY = 'cpan:MANWAR';
 
 =head1 NAME
@@ -9,7 +9,7 @@ Date::Hebrew::Simple - Represents Hebrew date.
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
@@ -57,8 +57,7 @@ sub BUILD {
 
     $self->validate_year($self->year)          if $self->has_year;
     $self->validate_hebrew_month($self->month) if $self->has_month;
-    # TODO: day calculation broken, needs fixing.
-    #$self->validate_day($self->day)            if $self->has_day;
+    $self->validate_day($self->day)            if $self->has_day;
 
     unless ($self->has_year && $self->has_month && $self->has_day) {
         my $today = localtime;
@@ -132,7 +131,7 @@ sub from_julian {
         $year++;
     }
 
-    my $first = ($julian_day < $self->to_julian($year, 7, 1)) ? (7) : (1);
+    my $first = ($julian_day < $self->to_julian($year, 1, 1)) ? (7) : (1);
     my $month = $first;
     for (my $m = $first; $julian_day > $self->to_julian($year, $m, $self->days_in_month_year($m, $year)); $m++) {
         $month++;
